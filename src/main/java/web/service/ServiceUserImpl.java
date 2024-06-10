@@ -1,7 +1,7 @@
-package service;
+package web.service;
 
-import dao.UserDao;
-import model.User;
+import web.dao.UserDao;
+import web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,17 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
 public class ServiceUserImpl implements ServiceUser{
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
     @Autowired
     public ServiceUserImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
-
+    @Transactional(readOnly = true)
     @Override
     public List<User> getUsers() {
         return userDao.getAllUsers();
