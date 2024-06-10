@@ -40,7 +40,7 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/user")
+    @GetMapping("/userID")
     public String userID(@RequestParam("id") int id, ModelMap modelMap) {
         modelMap.addAttribute("userID", serviceUser.getUser(id));
         return "userID";
